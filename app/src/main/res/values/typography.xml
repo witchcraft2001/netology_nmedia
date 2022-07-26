@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.BaseTheme" parent="">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/text_and_icon_primary</item>
+        <item name="android:textColorHint">@color/text_and_icon_secondary</item>
+    </style>
+
+    <style name="TextAppearance.BaseTheme.Body16Bold">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.BaseTheme.Body16Regular">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.BaseTheme.Caption14Bold">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.BaseTheme.Caption14Regular">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.BaseTheme.Caption12Bold">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.BaseTheme.Text12Medium">
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.BaseTheme.Caption12Regular">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.BaseTheme.Caption10Bold">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="TextAppearance.BaseTheme.Caption10Regular">
+        <item name="android:textSize">10sp</item>
+    </style>
+</resources>
