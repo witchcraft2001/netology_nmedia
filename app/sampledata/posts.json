@@ -1,0 +1,15 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "author": "Нетология. Университет интернет-профессий",
+      "authorAvatar": "@sample/posts_avatars",
+      "published": "21 мая в 18:36",
+      "isFavorite": false,
+      "favoriteCount": 52,
+      "commentsCount": 6,
+      "repostsCount": 5,
+      "viewsCount": 7312
+    }
+  ]
+}

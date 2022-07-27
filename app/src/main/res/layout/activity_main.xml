@@ -4,15 +4,132 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/size_m"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageViewAvatar"
+        android:layout_width="@dimen/size_3xl"
+        android:layout_height="48dp"
+        android:contentDescription="@string/author_avatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
     <TextView
+        android:id="@+id/textViewAuthor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_m"
+        android:layout_marginEnd="@dimen/size_m"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.BaseTheme.Caption14Bold"
+        app:layout_constraintBottom_toTopOf="@id/textViewTime"
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonMore"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewAvatar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="@sample/posts.json/data/author" />
+
+    <TextView
+        android:id="@+id/textViewTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.BaseTheme.Caption12Regular"
+        android:textColor="@color/text_and_icon_secondary"
+        app:layout_constraintBottom_toBottomOf="@id/imageViewAvatar"
+        app:layout_constraintEnd_toEndOf="@+id/textViewAuthor"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textViewAuthor"
+        app:layout_constraintTop_toBottomOf="@id/textViewAuthor"
+        tools:text="@sample/posts.json/data/published" />
+
+    <ImageButton
+        android:id="@+id/imageButtonMore"
+        android:layout_width="@dimen/size_xl"
+        android:layout_height="@dimen/size_xl"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/more_button"
+        android:src="@drawable/ic_more_vert_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/title"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="imageViewAvatar,imageButtonMore,textViewTime" />
+
+    <TextView
+        android:id="@+id/textViewPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_m"
+        android:textAppearance="@style/TextAppearance.BaseTheme.Caption14Regular"
+        app:layout_constraintTop_toBottomOf="@+id/barrier"
+        tools:text="@tools:sample/lorem/random" />
+
+    <ImageView
+        android:id="@+id/imageViewFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_m"
+        android:contentDescription="@string/favorite_counter"
+        android:src="@drawable/ic_favorite_border_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPost" />
+
+    <TextView
+        android:id="@+id/textViewFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_xs"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewFavorite"
+        app:layout_constraintStart_toEndOf="@+id/imageViewFavorite"
+        app:layout_constraintTop_toTopOf="@+id/imageViewFavorite"
+        tools:text="@sample/posts.json/data/favoriteCount" />
+
+    <ImageView
+        android:id="@+id/imageViewShares"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_m"
+        android:src="@drawable/ic_share_24"
+        android:contentDescription="@string/shares_counter"
+        app:layout_constraintStart_toEndOf="@id/textViewFavorite"
+        app:layout_constraintTop_toTopOf="@+id/imageViewFavorite" />
+
+    <TextView
+        android:id="@+id/textViewShares"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_xs"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewFavorite"
+        app:layout_constraintStart_toEndOf="@+id/imageViewShares"
+        app:layout_constraintTop_toTopOf="@+id/imageViewFavorite"
+        tools:text="@sample/posts.json/data/commentsCount" />
+
+    <ImageView
+        android:id="@+id/imageViewViewsCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/size_xs"
+        android:src="@drawable/ic_eye_24"
+        android:contentDescription="@string/reads_counter"
+        app:layout_constraintEnd_toStartOf="@id/textViewViewsCount"
+        app:layout_constraintTop_toTopOf="@+id/imageViewFavorite" />
+
+    <TextView
+        android:id="@+id/textViewViewsCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_xs"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewFavorite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewFavorite"
+        tools:text="@sample/posts.json/data/viewsCount" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
