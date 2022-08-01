@@ -31,7 +31,7 @@ class NumbersFormatterTest {
         //act
         val result = formatter.numberToString(1100)
         //assert
-        assertEquals("1,1K", result)
+        assertEquals("1,1K", result.replace(".", ","))
     }
 
     @Test
@@ -40,7 +40,7 @@ class NumbersFormatterTest {
         //act
         val result = formatter.numberToString(2500)
         //assert
-        assertEquals("2,5K", result)
+        assertEquals("2,5K", result.replace(".", ","))
     }
 
     @Test
@@ -76,7 +76,7 @@ class NumbersFormatterTest {
         //act
         val result = formatter.numberToString(1_200_000)
         //assert
-        assertEquals("1,2M", result)
+        assertEquals("1,2M", result.replace(".", ","))
     }
 
 }
