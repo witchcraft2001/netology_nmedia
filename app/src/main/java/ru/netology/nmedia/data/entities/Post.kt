@@ -6,8 +6,8 @@ data class Post(
     val authorAvatar: String,
     val published: String,
     val text: String,
-    val isFavorite: Boolean,
-    val favoriteCount: Int,
+    val isLiked: Boolean,
+    val likesCount: Int,
     val commentsCount: Int,
     val repostsCount: Int,
     val viewsCount: Int
