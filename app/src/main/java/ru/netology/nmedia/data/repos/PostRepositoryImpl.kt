@@ -103,9 +103,13 @@ class PostRepositoryImpl : PostRepository {
     }
 
     override fun save(post: Post) {
-        val item = post.copy(id = posts.maxOf { i -> i.id }.inc(), published = getTime())
-        posts = posts.toMutableList()
-            .apply { add(item) }
+        posts = if (post.id != 0L) {
+            posts.map { item ->  if (item.id == post.id) { post } else { item }}
+        } else {
+            val item = post.copy(id = posts.maxOf { i -> i.id }.inc(), published = getTime())
+            posts.toMutableList()
+                .apply { add(item) }
+        }
         data.value = posts
     }
 

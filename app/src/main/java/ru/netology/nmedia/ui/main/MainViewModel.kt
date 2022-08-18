@@ -10,6 +10,7 @@ class MainViewModel : ViewModel() {
     private val repository: PostRepository = PostRepositoryImpl()
     val data = repository.getAll()
     val post = MutableLiveData(Post.getEmpty())
+    val sourceMessage = MutableLiveData<String>(null)
     fun like(id: Long) = repository.likeById(id)
     fun share(id: Long) = repository.shareById(id)
     fun remove(id: Long) = repository.removeById(id)
@@ -18,7 +19,7 @@ class MainViewModel : ViewModel() {
         post.value?.let {
             repository.save(it)
         }
-        post.value = Post.getEmpty()
+        cancelEdit()
     }
 
     fun updateText(message: String) {
@@ -29,5 +30,15 @@ class MainViewModel : ViewModel() {
             }
             post.value = it.copy(text = text)
         }
+    }
+
+    fun edit(item: Post) {
+        post.value = item
+        sourceMessage.value = item.text
+    }
+
+    fun cancelEdit() {
+        post.value = Post.getEmpty()
+        sourceMessage.value = null
     }
 }

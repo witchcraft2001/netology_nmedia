@@ -11,34 +11,92 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/card_post"
+        app:layout_constraintBottom_toTopOf="@id/barrier"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/barrier"/>
+        tools:listitem="@layout/card_post" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="viewSeparatorSecond,imageView,textEditMessageTitle,textEditMessage,buttonCancel"/>
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="editText,buttonSavePost"
-        app:barrierDirection="top" />
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="viewSeparator,buttonSavePost,viewSeparatorSecond" />
+
+    <View
+        android:id="@+id/viewSeparatorSecond"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        app:layout_constraintBottom_toTopOf="@id/textEditMessageTitle" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:src="@drawable/ic_edit_24"
+        app:layout_constraintBottom_toBottomOf="@+id/textEditMessage"
+        app:layout_constraintTop_toTopOf="@+id/textEditMessageTitle" />
+
+    <TextView
+        android:id="@+id/textEditMessageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_message"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textEditMessage"
+        app:layout_constraintStart_toEndOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/textEditMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        app:layout_constraintBottom_toTopOf="@+id/viewSeparator"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCancel"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        tools:text="Message" />
+
+    <ImageButton
+        android:id="@+id/buttonCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:padding="8dp"
+        android:src="@drawable/ic_close_24"
+        app:layout_constraintBottom_toTopOf="@+id/viewSeparator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textEditMessageTitle" />
+
+    <View
+        android:id="@+id/viewSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        app:layout_constraintBottom_toTopOf="@id/editText" />
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:inputType="text"
         android:hint="@string/message"
-        app:layout_constraintStart_toStartOf="parent"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/buttonSavePost"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/buttonSavePost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_check_circle_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

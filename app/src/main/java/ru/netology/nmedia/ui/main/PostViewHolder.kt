@@ -12,7 +12,8 @@ class PostViewHolder(
     private val numbersFormatter: NumbersFormatter,
     private val onLikeListener: AdapterClickListener,
     private val onShareListener: AdapterClickListener,
-    private val onRemoveListener: AdapterClickListener
+    private val onRemoveListener: AdapterClickListener,
+    private val onEditListener: PostAdapterClickListener
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) {
         with(binding) {
@@ -38,6 +39,10 @@ class PostViewHolder(
                         when (item.itemId) {
                             R.id.remove -> {
                                 onRemoveListener(post.id)
+                                true
+                            }
+                            R.id.edit -> {
+                                onEditListener(post)
                                 true
                             }
                             else -> false
