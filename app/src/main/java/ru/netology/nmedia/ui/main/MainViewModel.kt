@@ -13,7 +13,13 @@ class MainViewModel : ViewModel() {
     val sourceMessage = MutableLiveData<String>(null)
     fun like(id: Long) = repository.likeById(id)
     fun share(id: Long) = repository.shareById(id)
-    fun remove(id: Long) = repository.removeById(id)
+
+    fun remove(id: Long) {
+        if (post.value?.id == id) {
+            cancelEdit()
+        }
+        repository.removeById(id)
+    }
 
     fun save() {
         post.value?.let {
