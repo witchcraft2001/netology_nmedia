@@ -8,4 +8,5 @@
     <string name="reads_counter">Reads counter</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
+    <string name="message">Message</string>
 </resources>

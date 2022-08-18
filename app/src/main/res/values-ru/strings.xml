@@ -8,5 +8,6 @@
     <string name="shares_counter">Счетчик репостов</string>
     <string name="reads_counter">Счетчик просмотров</string>
     <string name="delete">Удалить</string>
-    <string name="edit">Edit</string>
+    <string name="edit">Редактировать</string>
+    <string name="message">Сообщение</string>
 </resources>

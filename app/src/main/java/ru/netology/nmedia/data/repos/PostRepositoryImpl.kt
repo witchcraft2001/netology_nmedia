@@ -3,6 +3,8 @@ package ru.netology.nmedia.data.repos
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ru.netology.nmedia.data.entities.Post
+import java.text.SimpleDateFormat
+import java.util.*
 
 class PostRepositoryImpl : PostRepository {
     private var posts = listOf(
@@ -99,4 +101,14 @@ class PostRepositoryImpl : PostRepository {
         posts = posts.filter { item -> item.id != id }
         data.value = posts
     }
+
+    override fun save(post: Post) {
+        val item = post.copy(id = posts.maxOf { i -> i.id }.inc(), published = getTime())
+        posts = posts.toMutableList()
+            .apply { add(item) }
+        data.value = posts
+    }
+
+    private fun getTime(): String =
+        SimpleDateFormat.getDateInstance().format(Date(System.currentTimeMillis()))
 }

@@ -11,4 +11,19 @@ data class Post(
     val commentsCount: Int,
     val repostsCount: Int,
     val viewsCount: Int
-)
+) {
+    companion object {
+        fun getEmpty() = Post(
+            0,
+            "Anonymous",
+            "",
+            "",
+            "",
+            false,
+            0,
+            0,
+            0,
+            0
+        )
+    }
+}
