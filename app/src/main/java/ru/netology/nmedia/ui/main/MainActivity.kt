@@ -19,6 +19,9 @@ class MainActivity : AppCompatActivity() {
         },
         onShareListener = { id ->
             viewModel.share(id)
+        },
+        onRemoveListener = { id ->
+            viewModel.remove(id)
         }
     )
 
