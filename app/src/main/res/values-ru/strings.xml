@@ -11,4 +11,7 @@
     <string name="edit">Редактировать</string>
     <string name="message">Сообщение</string>
     <string name="edit_message">Редактирование сообщения</string>
+    <string name="description_post_like">Лайкнуть</string>
+    <string name="description_post_share">Поделиться</string>
+    <string name="description_post_options">Options</string>
 </resources>

@@ -21,17 +21,12 @@ class PostViewHolder(
             textViewPost.text = post.text
             textViewTime.text = post.published
             textViewViewsCount.text = numbersFormatter.numberToString(post.viewsCount)
-            textViewFavorite.text = numbersFormatter.numberToString(post.likesCount)
-            imageViewFavorite.setImageResource(
-                if (post.isLiked) {
-                    R.drawable.ic_favorite_24
-                } else {
-                    R.drawable.ic_favorite_border_24
-                }
-            )
-            textViewShares.text = numbersFormatter.numberToString(post.repostsCount)
-            imageViewFavorite.setOnClickListener { onLikeListener(post.id) }
-            imageViewShares.setOnClickListener { onShareListener(post.id) }
+            buttonLike.text = numbersFormatter.numberToString(post.likesCount)
+            buttonLike.isChecked = post.isLiked
+            buttonShare.text = numbersFormatter.numberToString(post.repostsCount)
+            buttonShare.isChecked = post.isShared
+            buttonLike.setOnClickListener { onLikeListener(post.id) }
+            buttonShare.setOnClickListener { onShareListener(post.id) }
             imageButtonMore.setOnClickListener {
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.options_post)

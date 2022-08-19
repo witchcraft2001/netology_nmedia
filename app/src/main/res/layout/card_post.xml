@@ -45,13 +45,13 @@
         app:layout_constraintTop_toBottomOf="@id/textViewAuthor"
         tools:text="@sample/posts.json/data/published" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/imageButtonMore"
-        android:layout_width="@dimen/size_xl"
-        android:layout_height="@dimen/size_xl"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/more_button"
-        android:src="@drawable/ic_more_vert_24"
+        style="@style/Widget.AppTheme.OptionsButton"
+        android:layout_width="@dimen/icon_button_min_size"
+        android:layout_height="@dimen/icon_button_min_size"
+        android:contentDescription="@string/description_post_options"
+        app:icon="@drawable/ic_more_vert_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -71,64 +71,50 @@
         app:layout_constraintTop_toBottomOf="@+id/barrier"
         tools:text="@tools:sample/lorem/random" />
 
-    <ImageView
-        android:id="@+id/imageViewFavorite"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonLike"
+        style="@style/Widget.AppTheme.LikeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_m"
-        android:contentDescription="@string/favorite_counter"
-        android:src="@drawable/ic_favorite_border_24"
+        android:checkable="true"
+        android:contentDescription="@string/description_post_like"
+        app:icon="@drawable/ic_like_selector_24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPost" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewPost"
+        tools:text="24" />
 
-    <TextView
-        android:id="@+id/textViewFavorite"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonShare"
+        style="@style/Widget.AppTheme.ShareButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/size_xs"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewFavorite"
-        app:layout_constraintStart_toEndOf="@+id/imageViewFavorite"
-        app:layout_constraintTop_toTopOf="@+id/imageViewFavorite"
-        tools:text="@sample/posts.json/data/favoriteCount" />
-
-    <ImageView
-        android:id="@+id/imageViewShares"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/size_m"
-        android:src="@drawable/ic_share_24"
-        android:contentDescription="@string/shares_counter"
-        app:layout_constraintStart_toEndOf="@id/textViewFavorite"
-        app:layout_constraintTop_toTopOf="@+id/imageViewFavorite" />
-
-    <TextView
-        android:id="@+id/textViewShares"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/size_xs"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewFavorite"
-        app:layout_constraintStart_toEndOf="@+id/imageViewShares"
-        app:layout_constraintTop_toTopOf="@+id/imageViewFavorite"
-        tools:text="@sample/posts.json/data/commentsCount" />
+        android:checkable="true"
+        android:contentDescription="@string/description_post_share"
+        app:icon="@drawable/ic_share_selector_24dp"
+        app:layout_constraintBottom_toBottomOf="@id/buttonLike"
+        app:layout_constraintStart_toEndOf="@id/buttonLike"
+        app:layout_constraintTop_toTopOf="@id/buttonLike"
+        tools:text="24" />
 
     <ImageView
         android:id="@+id/imageViewViewsCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/size_xs"
-        android:src="@drawable/ic_eye_24"
         android:contentDescription="@string/reads_counter"
+        android:src="@drawable/ic_eye_24"
+        app:layout_constraintBottom_toBottomOf="@id/buttonLike"
         app:layout_constraintEnd_toStartOf="@id/textViewViewsCount"
-        app:layout_constraintTop_toTopOf="@+id/imageViewFavorite" />
+        app:layout_constraintTop_toTopOf="@+id/buttonLike" />
 
     <TextView
         android:id="@+id/textViewViewsCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_xs"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewFavorite"
+        app:layout_constraintBottom_toBottomOf="@id/buttonLike"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageViewFavorite"
+        app:layout_constraintTop_toTopOf="@+id/buttonLike"
         tools:text="@sample/posts.json/data/viewsCount" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
