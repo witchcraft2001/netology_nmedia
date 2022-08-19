@@ -13,6 +13,8 @@ class PostAdapter(
     private val numbersFormatter: NumbersFormatter,
     private val onLikeListener: AdapterClickListener,
     private val onShareListener: AdapterClickListener,
+    private val onRemoveListener: AdapterClickListener,
+    private val onEditListener: PostAdapterClickListener
 ) : ListAdapter<Post, PostViewHolder>(PostDiffUtilCallback) {
 
     private lateinit var layoutInflater: LayoutInflater
@@ -27,7 +29,9 @@ class PostAdapter(
             CardPostBinding.inflate(layoutInflater, parent, false),
             numbersFormatter,
             onLikeListener,
-            onShareListener
+            onShareListener,
+            onRemoveListener,
+            onEditListener
         )
     }
 

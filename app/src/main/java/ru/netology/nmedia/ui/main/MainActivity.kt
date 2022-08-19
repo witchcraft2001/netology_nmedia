@@ -1,8 +1,10 @@
 package ru.netology.nmedia.ui.main
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.utils.NumbersFormatter
 
@@ -19,6 +21,12 @@ class MainActivity : AppCompatActivity() {
         },
         onShareListener = { id ->
             viewModel.share(id)
+        },
+        onRemoveListener = { id ->
+            viewModel.remove(id)
+        },
+        onEditListener = { post ->
+            viewModel.edit(post)
         }
     )
 
@@ -26,10 +34,29 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.recyclerView.swapAdapter(adapter, false)
+        with(binding) {
+            recyclerView.swapAdapter(adapter, false)
+            editText.addTextChangedListener { editable -> viewModel.updateText(editable.toString()) }
+            buttonSavePost.setOnClickListener { viewModel.save() }
+            buttonCancel.setOnClickListener { viewModel.cancelEdit() }
+        }
         viewModel.data.observe(this) { posts ->
             adapter.submitList(posts)
         }
+        viewModel.sourceMessage.observe(this) { message ->
+            with(binding) {
+                groupEdit.visibility = if (message.isNullOrEmpty()) View.GONE else View.VISIBLE
+                textEditMessage.text = message
+            }
+        }
+        viewModel.post.observe(this) { post ->
+            with(binding) {
+                if (editText.text.toString() != post?.text) {
+                    editText.setText(post?.text)
+                }
+            }
+        }
+
     }
 
     override fun onDestroy() {

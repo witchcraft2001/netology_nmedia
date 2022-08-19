@@ -6,4 +6,8 @@
     <string name="favorite_counter">Favorite counter</string>
     <string name="shares_counter">Shares counter</string>
     <string name="reads_counter">Reads counter</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="message">Message</string>
+    <string name="edit_message">Edit Message</string>
 </resources>
