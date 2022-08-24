@@ -2,7 +2,9 @@ package ru.netology.nmedia.data.entities
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.Serializable
 
+@Serializable
 @Parcelize
 data class Post(
     val id: Long,
