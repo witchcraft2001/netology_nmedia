@@ -1,5 +1,7 @@
 package ru.netology.nmedia.ui.main
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -36,7 +38,12 @@ class MainActivity : AppCompatActivity() {
         },
         onEditListener = { post ->
             postContract.launch(post)
-//            viewModel.edit(post)
+        },
+        onVideoClickListener = { post ->
+            post.video?.let { url ->
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                startActivity(Intent.createChooser(intent, getString(R.string.select_application)))
+            }
         }
     )
 
@@ -46,28 +53,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         with(binding) {
             recyclerView.swapAdapter(adapter, false)
-//            editText.addTextChangedListener { editable -> viewModel.updateText(editable.toString()) }
-//            buttonSavePost.setOnClickListener { viewModel.save() }
-//            buttonCancel.setOnClickListener { viewModel.cancelEdit() }
             addButton.setOnClickListener { postContract.launch(Post.getEmpty()) }
         }
         viewModel.data.observe(this) { posts ->
             adapter.submitList(posts)
         }
-//        viewModel.sourceMessage.observe(this) { message ->
-//            with(binding) {
-//                groupEdit.visibility = if (message.isNullOrEmpty()) View.GONE else View.VISIBLE
-//                textEditMessage.text = message
-//            }
-//        }
-//        viewModel.post.observe(this) { post ->
-//            with(binding) {
-//                if (editText.text.toString() != post?.text) {
-//                    editText.setText(post?.text)
-//                }
-//            }
-//        }
-
     }
 
     override fun onDestroy() {

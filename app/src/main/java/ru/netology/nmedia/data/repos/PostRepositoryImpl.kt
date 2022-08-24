@@ -21,6 +21,7 @@ class PostRepositoryImpl : PostRepository {
                     "Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, " +
                     "porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, " +
                     "feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.",
+            video = null,
             isLiked = false,
             isShared = false,
             likesCount = 52,
@@ -41,6 +42,7 @@ class PostRepositoryImpl : PostRepository {
                     "Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, " +
                     "porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, " +
                     "feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.",
+            video = "https://www.youtube.com/watch?v=zJfOnZtoGtU",
             isLiked = false,
             isShared = false,
             likesCount = 43,
@@ -61,6 +63,7 @@ class PostRepositoryImpl : PostRepository {
                     "Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, " +
                     "porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, " +
                     "feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.",
+            video = null,
             isLiked = false,
             isShared = false,
             likesCount = 12,

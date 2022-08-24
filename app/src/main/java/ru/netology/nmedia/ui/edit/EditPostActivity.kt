@@ -27,6 +27,7 @@ class EditPostActivity : AppCompatActivity() {
         intent.getParcelableExtra<Post>(ARG_POST)?.let { viewModel.setPost(it) }
         with(binding) {
             editText.addTextChangedListener { editable -> viewModel.updateText(editable.toString()) }
+            editVideoText.addTextChangedListener { editable -> viewModel.updateVideoText(editable.toString()) }
             okButton.setOnClickListener {
                 setResult(
                     if (viewModel.post.value?.text.isNullOrEmpty()) RESULT_CANCELED else RESULT_OK,
@@ -48,6 +49,9 @@ class EditPostActivity : AppCompatActivity() {
             with(binding) {
                 if (editText.text.toString() != post?.text) {
                     editText.setText(post?.text)
+                }
+                if (editVideoText.text.toString() != post?.video) {
+                    editVideoText.setText(post?.video)
                 }
             }
         }

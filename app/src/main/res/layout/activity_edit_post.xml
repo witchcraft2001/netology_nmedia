@@ -65,6 +65,26 @@
             app:layout_constraintTop_toBottomOf="@id/textEditMessage" />
 
         <EditText
+            android:id="@+id/editVideoText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:layout_marginBottom="@dimen/size_3xl"
+            android:background="@android:color/transparent"
+            android:hint="@string/video"
+            android:inputType="textUri"
+            android:padding="@dimen/size_m"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewSeparator" />
+
+        <View
+            android:id="@+id/viewSecondSeparator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            app:layout_constraintTop_toBottomOf="@id/editVideoText" />
+
+        <EditText
             android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -76,7 +96,7 @@
             android:padding="@dimen/size_m"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/viewSeparator" />
+            app:layout_constraintTop_toBottomOf="@id/viewSecondSeparator" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

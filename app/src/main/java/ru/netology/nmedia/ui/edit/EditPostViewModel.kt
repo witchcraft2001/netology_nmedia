@@ -24,4 +24,14 @@ class EditPostViewModel: ViewModel() {
             post.value = it.copy(text = text)
         }
     }
+
+    fun updateVideoText(message: String) {
+        post.value?.let {
+            val video = message.trim()
+            if (video.isEmpty() || it.video == video) {
+                return
+            }
+            post.value = it.copy(video = video)
+        }
+    }
 }

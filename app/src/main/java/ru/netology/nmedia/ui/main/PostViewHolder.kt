@@ -1,5 +1,6 @@
 package ru.netology.nmedia.ui.main
 
+import android.view.View
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
@@ -13,7 +14,8 @@ class PostViewHolder(
     private val onLikeListener: AdapterClickListener,
     private val onShareListener: AdapterClickListener,
     private val onRemoveListener: AdapterClickListener,
-    private val onEditListener: PostAdapterClickListener
+    private val onEditListener: PostAdapterClickListener,
+    private val onVideoClickListener: PostAdapterClickListener
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) {
         with(binding) {
@@ -27,6 +29,8 @@ class PostViewHolder(
             buttonShare.isChecked = post.isShared
             buttonLike.setOnClickListener { onLikeListener(post.id) }
             buttonShare.setOnClickListener { onShareListener(post.id) }
+            previewImage.setOnClickListener { onVideoClickListener(post) }
+            playGroup.visibility = if (post.video.isNullOrBlank()) View.GONE else View.VISIBLE
             imageButtonMore.setOnClickListener {
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.options_post)
