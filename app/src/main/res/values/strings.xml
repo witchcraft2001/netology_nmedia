@@ -13,4 +13,5 @@
     <string name="description_post_like">Like</string>
     <string name="description_post_share">Share</string>
     <string name="description_post_options">Options</string>
+    <string name="post_saved">Post saved successfully</string>
 </resources>
