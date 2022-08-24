@@ -22,6 +22,7 @@ class PostRepositoryImpl : PostRepository {
                     "porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, " +
                     "feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.",
             isLiked = false,
+            isShared = false,
             likesCount = 52,
             commentsCount = 6,
             repostsCount = 998,
@@ -41,6 +42,7 @@ class PostRepositoryImpl : PostRepository {
                     "porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, " +
                     "feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.",
             isLiked = false,
+            isShared = false,
             likesCount = 43,
             commentsCount = 8,
             repostsCount = 1200,
@@ -60,6 +62,7 @@ class PostRepositoryImpl : PostRepository {
                     "porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, " +
                     "feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.",
             isLiked = false,
+            isShared = false,
             likesCount = 12,
             commentsCount = 57,
             repostsCount = 355,
@@ -91,7 +94,7 @@ class PostRepositoryImpl : PostRepository {
             if (it.id != id) {
                 it
             } else {
-                it.copy(repostsCount = it.repostsCount + 1)
+                it.copy(repostsCount = it.repostsCount + 1, isShared = true)
             }
         }
         data.value = posts

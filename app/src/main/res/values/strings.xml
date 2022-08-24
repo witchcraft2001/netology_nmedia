@@ -10,4 +10,7 @@
     <string name="edit">Edit</string>
     <string name="message">Message</string>
     <string name="edit_message">Edit Message</string>
+    <string name="description_post_like">Like</string>
+    <string name="description_post_share">Share</string>
+    <string name="description_post_options">Options</string>
 </resources>
