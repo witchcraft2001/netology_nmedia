@@ -13,4 +13,7 @@
     <string name="description_post_like">Like</string>
     <string name="description_post_share">Share</string>
     <string name="description_post_options">Options</string>
+    <string name="post_saved">Post saved successfully</string>
+    <string name="video">Video</string>
+    <string name="select_application">Choose application</string>
 </resources>

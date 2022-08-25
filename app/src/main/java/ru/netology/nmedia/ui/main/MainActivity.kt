@@ -1,16 +1,27 @@
 package ru.netology.nmedia.ui.main
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.addTextChangedListener
+import ru.netology.nmedia.R
+import ru.netology.nmedia.data.entities.Post
 import ru.netology.nmedia.databinding.ActivityMainBinding
+import ru.netology.nmedia.ui.edit.EditPostActivity
 import ru.netology.nmedia.utils.NumbersFormatter
 
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels()
+
+    private val postContract = registerForActivityResult(EditPostActivity.Contract) { post ->
+        if (post != null) {
+            viewModel.save(post)
+            Toast.makeText(this, getString(R.string.post_saved), Toast.LENGTH_LONG).show()
+        }
+    }
 
     private lateinit var binding: ActivityMainBinding
     private val numbersFormatter = NumbersFormatter()
@@ -26,7 +37,13 @@ class MainActivity : AppCompatActivity() {
             viewModel.remove(id)
         },
         onEditListener = { post ->
-            viewModel.edit(post)
+            postContract.launch(post)
+        },
+        onVideoClickListener = { post ->
+            post.video?.let { url ->
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                startActivity(Intent.createChooser(intent, getString(R.string.select_application)))
+            }
         }
     )
 
@@ -36,27 +53,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         with(binding) {
             recyclerView.swapAdapter(adapter, false)
-            editText.addTextChangedListener { editable -> viewModel.updateText(editable.toString()) }
-            buttonSavePost.setOnClickListener { viewModel.save() }
-            buttonCancel.setOnClickListener { viewModel.cancelEdit() }
+            addButton.setOnClickListener { postContract.launch(Post.getEmpty()) }
         }
         viewModel.data.observe(this) { posts ->
             adapter.submitList(posts)
         }
-        viewModel.sourceMessage.observe(this) { message ->
-            with(binding) {
-                groupEdit.visibility = if (message.isNullOrEmpty()) View.GONE else View.VISIBLE
-                textEditMessage.text = message
-            }
-        }
-        viewModel.post.observe(this) { post ->
-            with(binding) {
-                if (editText.text.toString() != post?.text) {
-                    editText.setText(post?.text)
-                }
-            }
-        }
-
     }
 
     override fun onDestroy() {

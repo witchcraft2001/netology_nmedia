@@ -14,4 +14,7 @@
     <string name="description_post_like">Лайкнуть</string>
     <string name="description_post_share">Поделиться</string>
     <string name="description_post_options">Options</string>
+    <string name="post_saved">Пост успешно сохранен</string>
+    <string name="video">Video</string>
+    <string name="select_application">Выберите приложение</string>
 </resources>

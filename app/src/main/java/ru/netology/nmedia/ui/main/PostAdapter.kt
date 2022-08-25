@@ -14,7 +14,8 @@ class PostAdapter(
     private val onLikeListener: AdapterClickListener,
     private val onShareListener: AdapterClickListener,
     private val onRemoveListener: AdapterClickListener,
-    private val onEditListener: PostAdapterClickListener
+    private val onEditListener: PostAdapterClickListener,
+    private val onVideoClickListener: PostAdapterClickListener
 ) : ListAdapter<Post, PostViewHolder>(PostDiffUtilCallback) {
 
     private lateinit var layoutInflater: LayoutInflater
@@ -31,7 +32,8 @@ class PostAdapter(
             onLikeListener,
             onShareListener,
             onRemoveListener,
-            onEditListener
+            onEditListener,
+            onVideoClickListener
         )
     }
 

@@ -62,13 +62,45 @@
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="imageViewAvatar,imageButtonMore,textViewTime" />
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/playGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="previewImage, playImage"/>
+
+    <ImageView
+        android:id="@+id/previewImage"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_marginTop="@dimen/size_m"
+        android:scaleType="centerCrop"
+        android:src="@drawable/hqdefault"
+        app:layout_constraintTop_toBottomOf="@+id/barrier" />
+
+    <ImageView
+        android:id="@+id/playImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/previewImage"
+        app:layout_constraintEnd_toEndOf="@+id/previewImage"
+        app:layout_constraintStart_toStartOf="@+id/previewImage"
+        app:layout_constraintTop_toTopOf="@+id/previewImage"
+        app:srcCompat="@drawable/ic_play_circle_48" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/textBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="previewImage,barrier" />
+
     <TextView
         android:id="@+id/textViewPost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_m"
         android:textAppearance="@style/TextAppearance.BaseTheme.Caption14Regular"
-        app:layout_constraintTop_toBottomOf="@+id/barrier"
+        app:layout_constraintTop_toBottomOf="@+id/textBarrier"
         tools:text="@tools:sample/lorem/random" />
 
     <com.google.android.material.button.MaterialButton
